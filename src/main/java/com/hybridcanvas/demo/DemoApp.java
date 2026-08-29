@@ -16,17 +16,28 @@ import javafx.scene.paint.Color;
 import javafx.scene.shape.Ellipse;
 import javafx.scene.shape.Polygon;
 import javafx.scene.shape.Rectangle;
+import javafx.scene.transform.Scale;
+import javafx.scene.transform.Translate;
 import javafx.stage.Stage;
 
 import java.util.Random;
 
 public class DemoApp extends Application {
 
+    // ponytail: fixed range, upgrade to configurable zoom bounds per SPEC §5
+    private static final double MIN_ZOOM = 0.05;
+    private static final double MAX_ZOOM = 50.0;
+
     private final Random rnd = new Random();
     private BorderPane root;
     private Pane paneMode;
+    private Pane paneContent;
+    private final Scale zoom = new Scale(1, 1);
+    private final Translate pan = new Translate(0, 0);
     private HybridCanvas hybridMode;
     private boolean hybrid;
+
+    private double dragStartX, dragStartY, dragStartPanX, dragStartPanY;
 
     @Override
     public void start(Stage stage) {
@@ -35,11 +46,36 @@ public class DemoApp extends Application {
 
         paneMode = new Pane();
         paneMode.setId("canvas-center");
+        clipToBounds(paneMode);
+
+        paneContent = new Pane();
+        paneContent.getTransforms().addAll(zoom, pan);
+        paneMode.getChildren().add(paneContent);
+
         hybridMode = new HybridCanvas();
         hybridMode.setId("canvas-center");
-
-        clipToBounds(paneMode);
         clipToBounds(hybridMode);
+
+        paneMode.setOnScroll(e -> {
+            double factor = e.getDeltaY() > 0 ? 1.1 : 1.0 / 1.1;
+            zoomAt(e.getX(), e.getY(), factor);
+        });
+
+        paneMode.setOnMousePressed(e -> {
+            if (e.isPrimaryButtonDown()) {
+                dragStartX = e.getX();
+                dragStartY = e.getY();
+                dragStartPanX = pan.getX();
+                dragStartPanY = pan.getY();
+            }
+        });
+
+        paneMode.setOnMouseDragged(e -> {
+            if (e.isPrimaryButtonDown()) {
+                pan.setX(dragStartPanX + (e.getX() - dragStartX));
+                pan.setY(dragStartPanY + (e.getY() - dragStartY));
+            }
+        });
 
         root.setCenter(paneMode);
 
@@ -47,6 +83,28 @@ public class DemoApp extends Application {
         stage.setScene(scene);
         stage.setTitle("HybridCanvas Demo");
         stage.show();
+    }
+
+    void zoomAt(double mx, double my, double factor) {
+        double s = zoom.getX();
+        double ns = Math.max(MIN_ZOOM, Math.min(MAX_ZOOM, s * factor));
+        double applied = ns / s;
+        pan.setX(mx - (mx - pan.getX()) * applied);
+        pan.setY(my - (my - pan.getY()) * applied);
+        zoom.setX(ns);
+        zoom.setY(ns);
+    }
+
+    double getZoom() {
+        return zoom.getX();
+    }
+
+    double getPanX() {
+        return pan.getX();
+    }
+
+    double getPanY() {
+        return pan.getY();
     }
 
     private HBox buildToolbar() {
@@ -96,6 +154,7 @@ public class DemoApp extends Application {
 
     private void addRandomShape() {
         Pane target = currentTarget();
+        if (target == null) return; // ponytail: hybrid stub — shapes wired at prompt 10
         switch (rnd.nextInt(3)) {
             case 0 -> target.getChildren().add(randomRect());
             case 1 -> target.getChildren().add(randomEllipse());
@@ -104,11 +163,14 @@ public class DemoApp extends Application {
     }
 
     private void addRandomImage() {
-        currentTarget().getChildren().add(randomImageView());
+        Pane target = currentTarget();
+        if (target != null) {
+            target.getChildren().add(randomImageView());
+        }
     }
 
     private Pane currentTarget() {
-        return hybrid ? hybridMode : paneMode;
+        return hybrid ? null : paneContent;
     }
 
     private static void clipToBounds(Pane pane) {

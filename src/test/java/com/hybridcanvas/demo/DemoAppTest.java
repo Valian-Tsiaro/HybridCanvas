@@ -58,4 +58,13 @@ class DemoAppTest extends ApplicationTest {
         Node center = lookup("#canvas-center").query();
         assertEquals(Pane.class, center.getClass());
     }
+
+    @Test
+    void zoomAtKeepsWorldPointUnderCursor() {
+        DemoApp app = new DemoApp();
+        app.zoomAt(100, 50, 2.0);
+        assertEquals(2.0, app.getZoom(), 1e-9);
+        assertEquals(-100.0, app.getPanX(), 1e-9);
+        assertEquals(-50.0, app.getPanY(), 1e-9);
+    }
 }
