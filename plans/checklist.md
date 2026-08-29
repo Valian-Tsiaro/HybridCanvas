@@ -9,7 +9,7 @@ Status legend: `[ ]` todo, `[x]` done.
 - [x] 01-geom-bounds-transform-viewport.md
 
 ## Phase 2 — Model
-- [ ] 02-model-color-element-base.md
+- [x] 02-model-color-element-base.md
 - [ ] 03-model-shapes.md
 - [ ] 04-model-group-layer.md
 - [ ] 05-model-image-shapes.md
