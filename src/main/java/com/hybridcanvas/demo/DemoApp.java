@@ -22,6 +22,11 @@ import javafx.stage.Stage;
 
 import java.util.Random;
 
+/**
+ * Hand-driven harness comparing plain {@code Pane} rendering against
+ * {@link HybridCanvas} under zoom, pan, and bulk shape/image generation.
+ * Scratch UI for eyeballing performance; not part of the library surface.
+ */
 public class DemoApp extends Application {
 
     // ponytail: fixed range, upgrade to configurable zoom bounds per SPEC §5
@@ -39,6 +44,7 @@ public class DemoApp extends Application {
 
     private double dragStartX, dragStartY, dragStartPanX, dragStartPanY;
 
+    /** Builds the toolbar and both render modes, then wires zoom and pan gestures. */
     @Override
     public void start(Stage stage) {
         root = new BorderPane();
@@ -85,6 +91,11 @@ public class DemoApp extends Application {
         stage.show();
     }
 
+    /**
+     * Scales by {@code factor} around the screen point ({@code mx}, {@code my}) so
+     * the world point under it stays pinned. Clamps to the zoom bounds and compensates
+     * the pan offset accordingly.
+     */
     void zoomAt(double mx, double my, double factor) {
         double s = zoom.getX();
         double ns = Math.max(MIN_ZOOM, Math.min(MAX_ZOOM, s * factor));
@@ -95,18 +106,22 @@ public class DemoApp extends Application {
         zoom.setY(ns);
     }
 
+    /** Current zoom factor, exposed for TestFX assertions. */
     double getZoom() {
         return zoom.getX();
     }
 
+    /** Horizontal pan offset, exposed for TestFX assertions. */
     double getPanX() {
         return pan.getX();
     }
 
+    /** Vertical pan offset, exposed for TestFX assertions. */
     double getPanY() {
         return pan.getY();
     }
 
+    /** Assembles the add/generate buttons, count field, and mode toggle. */
     private HBox buildToolbar() {
         Button addShape = new Button("Add Shape");
         addShape.setOnAction(e -> addRandomShape());
@@ -140,6 +155,7 @@ public class DemoApp extends Application {
         return toolbar;
     }
 
+    /** Adds n random shapes; silently ignores non-numeric input. */
     private void generateN(TextField countField) {
         int n;
         try {
@@ -152,6 +168,7 @@ public class DemoApp extends Application {
         }
     }
 
+    /** Adds one randomly chosen shape (rect, ellipse, or polygon). */
     private void addRandomShape() {
         Pane target = currentTarget();
         if (target == null) return; // ponytail: hybrid stub — shapes wired at prompt 10
@@ -162,6 +179,7 @@ public class DemoApp extends Application {
         }
     }
 
+    /** Adds a small randomly generated image. */
     private void addRandomImage() {
         Pane target = currentTarget();
         if (target != null) {
@@ -169,10 +187,12 @@ public class DemoApp extends Application {
         }
     }
 
+    /** Content target for new objects; null in hybrid mode until wiring lands. */
     private Pane currentTarget() {
         return hybrid ? null : paneContent;
     }
 
+    /** Clips the pane to its own bounds so panned content never bleeds outside. */
     private static void clipToBounds(Pane pane) {
         Rectangle clip = new Rectangle();
         clip.widthProperty().bind(pane.widthProperty());
