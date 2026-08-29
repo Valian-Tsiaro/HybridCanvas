@@ -6,7 +6,7 @@ Status legend: `[ ]` todo, `[x]` done.
 - [x] 00-javafx-init-demo.md
 
 ## Phase 1 — Geometry
-- [ ] 01-geom-bounds-transform-viewport.md
+- [x] 01-geom-bounds-transform-viewport.md
 
 ## Phase 2 — Model
 - [ ] 02-model-color-element-base.md
