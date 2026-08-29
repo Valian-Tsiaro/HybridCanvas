@@ -3,7 +3,7 @@
 Status legend: `[ ]` todo, `[x]` done.
 
 ## Phase 0 — Scaffold + demo harness
-- [ ] 00-javafx-init-demo.md
+- [x] 00-javafx-init-demo.md
 
 ## Phase 1 — Geometry
 - [ ] 01-geom-bounds-transform-viewport.md
