@@ -18,7 +18,7 @@ Status legend: `[ ]` todo, `[x]` done.
 - [x] 06-index-rtree.md
 
 ## Phase 4 — Store + traversal
-- [ ] 07-store-modelstore.md
+- [x] 07-store-modelstore.md
 - [ ] 08-view-render-traversal.md
 
 ## Phase 5 — Rendering
