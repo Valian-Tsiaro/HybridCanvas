@@ -1,13 +1,14 @@
 package com.hybridcanvas.model;
 
 /**
- * Sealed abstract base for the five non-image shape types.
+ * Sealed abstract base for all shape types (non-image and image-bearing).
  * Carries appearance fields ({@code fill}, {@code stroke}, {@code strokeWidth})
  * and layer/z-order metadata. Geometry contract is local-space only:
  * {@link #getLocalBounds} and {@link #containsLocal}.
  */
 public sealed abstract class HybridCanvasShape extends HybridCanvasElement
-        permits HybridCanvasPolyShape, HybridCanvasRectangle, HybridCanvasEllipse {
+        permits HybridCanvasPolyShape, HybridCanvasRectangle, HybridCanvasEllipse,
+                HybridCanvasImageShape {
 
     private HybridCanvasColor fill;
     private HybridCanvasColor stroke;

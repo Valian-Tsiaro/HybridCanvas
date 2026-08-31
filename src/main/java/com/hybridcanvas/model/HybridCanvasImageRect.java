@@ -1,0 +1,76 @@
+package com.hybridcanvas.model;
+
+import com.hybridcanvas.geom.Bounds2D;
+
+/** Image displayed in an axis-aligned rectangle. */
+public final class HybridCanvasImageRect extends HybridCanvasImageShape {
+
+    private double x;
+    private double y;
+    private double w;
+    private double h;
+
+    /**
+     * @param imageRef image reference key
+     * @param x x coordinate of the rectangle origin
+     * @param y y coordinate of the rectangle origin
+     * @param w width; may be negative
+     * @param h height; may be negative
+     */
+    public HybridCanvasImageRect(String imageRef, double x, double y, double w, double h) {
+        super(imageRef);
+        this.x = x;
+        this.y = y;
+        this.w = w;
+        this.h = h;
+    }
+
+    /** @return x coordinate of the rectangle origin */
+    public double getX() { return x; }
+
+    /** @return y coordinate of the rectangle origin */
+    public double getY() { return y; }
+
+    /** @return width of the rectangle (may be negative) */
+    public double getWidth() { return w; }
+
+    /** @return height of the rectangle (may be negative) */
+    public double getHeight() { return h; }
+
+    /** @param x new x coordinate; bumps version */
+    public void setX(double x) { this.x = x; bumpVersion(); }
+
+    /** @param y new y coordinate; bumps version */
+    public void setY(double y) { this.y = y; bumpVersion(); }
+
+    /** @param w new width; bumps version */
+    public void setWidth(double w) { this.w = w; bumpVersion(); }
+
+    /** @param h new height; bumps version */
+    public void setHeight(double h) { this.h = h; bumpVersion(); }
+
+    /**
+     * {@inheritDoc}
+     * Bounds are the axis-aligned rect spanned by origin and extent.
+     * Negative {@code w} or {@code h} are handled correctly.
+     */
+    @Override
+    public Bounds2D getLocalBounds(Bounds2D out) {
+        double x1 = Math.min(x, x + w);
+        double y1 = Math.min(y, y + h);
+        double x2 = Math.max(x, x + w);
+        double y2 = Math.max(y, y + h);
+        out.set(x1, y1, x2, y2);
+        return out;
+    }
+
+    /** {@inheritDoc} Negative {@code w} or {@code h} are handled correctly. */
+    @Override
+    public boolean containsLocal(double px, double py) {
+        double x1 = Math.min(x, x + w);
+        double y1 = Math.min(y, y + h);
+        double x2 = Math.max(x, x + w);
+        double y2 = Math.max(y, y + h);
+        return px >= x1 && px <= x2 && py >= y1 && py <= y2;
+    }
+}

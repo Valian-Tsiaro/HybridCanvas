@@ -12,7 +12,7 @@ Status legend: `[ ]` todo, `[x]` done.
 - [x] 02-model-color-element-base.md
 - [x] 03-model-shapes.md
 - [x] 04-model-group-layer.md
-- [ ] 05-model-image-shapes.md
+- [x] 05-model-image-shapes.md
 
 ## Phase 3 — Spatial index
 - [ ] 06-index-rtree.md
