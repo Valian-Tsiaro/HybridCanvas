@@ -15,7 +15,7 @@ Status legend: `[ ]` todo, `[x]` done.
 - [x] 05-model-image-shapes.md
 
 ## Phase 3 — Spatial index
-- [ ] 06-index-rtree.md
+- [x] 06-index-rtree.md
 
 ## Phase 4 — Store + traversal
 - [ ] 07-store-modelstore.md
