@@ -10,7 +10,7 @@ Status legend: `[ ]` todo, `[x]` done.
 
 ## Phase 2 — Model
 - [x] 02-model-color-element-base.md
-- [ ] 03-model-shapes.md
+- [x] 03-model-shapes.md
 - [ ] 04-model-group-layer.md
 - [ ] 05-model-image-shapes.md
 

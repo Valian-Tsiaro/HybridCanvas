@@ -86,56 +86,61 @@ public sealed abstract class HybridCanvasElement permits HybridCanvasShape, Hybr
     }
 
     /** Bumps the version so the view's dirty-check re-renders next pass. */
+    protected final void bumpVersion() {
+        version++;
+    }
+
+    /** Bumps the version so the view's dirty-check re-renders next pass. */
     public void setRotate(double rotate) {
         this.rotate = rotate;
-        version++;
+        bumpVersion();
     }
 
     /** Bumps the version so the view's dirty-check re-renders next pass. */
     public void setScaleX(double scaleX) {
         this.scaleX = scaleX;
-        version++;
+        bumpVersion();
     }
 
     /** Bumps the version so the view's dirty-check re-renders next pass. */
     public void setScaleY(double scaleY) {
         this.scaleY = scaleY;
-        version++;
+        bumpVersion();
     }
 
     /** Bumps the version so the view's dirty-check re-renders next pass. */
     public void setTranslateX(double translateX) {
         this.translateX = translateX;
-        version++;
+        bumpVersion();
     }
 
     /** Bumps the version so the view's dirty-check re-renders next pass. */
     public void setTranslateY(double translateY) {
         this.translateY = translateY;
-        version++;
+        bumpVersion();
     }
 
     /** Bumps the version so the view's dirty-check re-renders next pass. */
     public void setVisible(boolean visible) {
         this.visible = visible;
-        version++;
+        bumpVersion();
     }
 
     /** Bumps the version so the view's dirty-check re-renders next pass. */
     public void setLocked(boolean locked) {
         this.locked = locked;
-        version++;
+        bumpVersion();
     }
 
     /** Bumps the version so the view's dirty-check re-renders next pass. Value is clamped to 0..1. */
     public void setOpacity(double opacity) {
         this.opacity = Math.max(0.0, Math.min(1.0, opacity));
-        version++;
+        bumpVersion();
     }
 
     /** Bumps the version so the view's dirty-check re-renders next pass. */
     public void setParentId(UUID parentId) {
         this.parentId = parentId;
-        version++;
+        bumpVersion();
     }
 }
