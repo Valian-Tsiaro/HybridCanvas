@@ -1,7 +1,5 @@
 package com.hybridcanvas.model;
 
-import com.hybridcanvas.geom.Bounds2D;
-
 /**
  * Sealed abstract base for the five non-image shape types.
  * Carries appearance fields ({@code fill}, {@code stroke}, {@code strokeWidth})
@@ -89,15 +87,6 @@ public sealed abstract class HybridCanvasShape extends HybridCanvasElement
         this.zOrder = zOrder;
         bumpVersion();
     }
-
-    /**
-     * Fills {@code out} with the intrinsic local-space bounding box.
-     * No allocation — the caller owns the {@link Bounds2D} instance.
-     *
-     * @param out reusable bounds to populate
-     * @return {@code out}, for chaining
-     */
-    public abstract Bounds2D getLocalBounds(Bounds2D out);
 
     /**
      * Point-in-shape test in local space. No world-coord conversion is applied.

@@ -116,4 +116,18 @@ public final class Bounds2D {
     public double height() {
         return maxY - minY;
     }
+
+    /**
+     * Resets this box to the empty sentinel ({@code minX = minY = +Inf}, {@code maxX = maxY = -Inf}).
+     * A union with an empty box yields the other operand unchanged.
+     */
+    public void setEmpty() {
+        minX = minY = Double.POSITIVE_INFINITY;
+        maxX = maxY = Double.NEGATIVE_INFINITY;
+    }
+
+    /** @return {@code true} if this box is the empty sentinel (minX > maxX or minY > maxY) */
+    public boolean isEmpty() {
+        return minX > maxX || minY > maxY;
+    }
 }

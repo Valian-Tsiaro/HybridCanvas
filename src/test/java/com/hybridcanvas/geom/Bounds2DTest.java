@@ -128,4 +128,33 @@ class Bounds2DTest {
         assertEquals(30, a.maxX);
         assertEquals(40, a.maxY);
     }
+
+    @Test
+    void setEmptyCreatesEmptyBounds() {
+        Bounds2D b = new Bounds2D(1, 2, 3, 4);
+        assertFalse(b.isEmpty());
+        b.setEmpty();
+        assertTrue(b.isEmpty());
+    }
+
+    @Test
+    void emptyBoundsFailsContains() {
+        Bounds2D b = new Bounds2D();
+        b.setEmpty();
+        assertFalse(b.contains(0, 0));
+    }
+
+    @Test
+    void emptyBoundsFailsIntersects() {
+        Bounds2D a = new Bounds2D();
+        a.setEmpty();
+        Bounds2D b = new Bounds2D(0, 0, 10, 10);
+        assertFalse(a.intersects(b));
+    }
+
+    @Test
+    void normalBoundsAreNotEmpty() {
+        Bounds2D b = new Bounds2D(0, 0, 10, 10);
+        assertFalse(b.isEmpty());
+    }
 }
