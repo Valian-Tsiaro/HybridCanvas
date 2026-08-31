@@ -24,9 +24,7 @@ public sealed abstract class HybridCanvasImageShape extends HybridCanvasShape
         return imageRef;
     }
 
-    /**
-     * @param imageRef the new image reference key; bumps version
-     */
+    /** @param imageRef the new image reference key */
     public void setImageRef(String imageRef) {
         this.imageRef = imageRef;
         bumpVersion();

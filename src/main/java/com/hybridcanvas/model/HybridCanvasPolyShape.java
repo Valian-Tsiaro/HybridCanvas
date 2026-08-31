@@ -61,11 +61,12 @@ public sealed abstract class HybridCanvasPolyShape extends HybridCanvasShape
     }
 
     /**
-     * Sets the coordinates of the i-th point and bumps the element version.
+     * Sets the coordinates of the i-th point.
      *
      * @param i zero-based point index
      * @param x new x coordinate
      * @param y new y coordinate
+     * @throws IndexOutOfBoundsException if {@code i} is out of range
      */
     public void setPoint(int i, double x, double y) {
         points[2 * i] = x;

@@ -36,7 +36,7 @@ public final class Transform2D {
         this.m12 = m12;
     }
 
-    /** @return the identity transform */
+    /** Returns the identity transform. @return the identity transform */
     public static Transform2D identity() {
         return new Transform2D(1, 0, 0, 0, 1, 0);
     }

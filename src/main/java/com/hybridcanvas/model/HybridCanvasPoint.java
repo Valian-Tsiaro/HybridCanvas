@@ -8,10 +8,7 @@ package com.hybridcanvas.model;
  */
 public final class HybridCanvasPoint {
 
-    /** x coordinate. */
     public double x;
-
-    /** y coordinate. */
     public double y;
 
     /** Default constructor; fields are zero-initialised. */

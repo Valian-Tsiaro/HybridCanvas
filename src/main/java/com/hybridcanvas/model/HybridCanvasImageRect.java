@@ -37,16 +37,16 @@ public final class HybridCanvasImageRect extends HybridCanvasImageShape {
     /** @return height of the rectangle (may be negative) */
     public double getHeight() { return h; }
 
-    /** @param x new x coordinate; bumps version */
+    /** @param x new x coordinate */
     public void setX(double x) { this.x = x; bumpVersion(); }
 
-    /** @param y new y coordinate; bumps version */
+    /** @param y new y coordinate */
     public void setY(double y) { this.y = y; bumpVersion(); }
 
-    /** @param w new width; bumps version */
+    /** @param w new width */
     public void setWidth(double w) { this.w = w; bumpVersion(); }
 
-    /** @param h new height; bumps version */
+    /** @param h new height */
     public void setHeight(double h) { this.h = h; bumpVersion(); }
 
     /**

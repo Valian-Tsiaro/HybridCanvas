@@ -72,18 +72,22 @@ public final class HybridCanvasColor {
         return argb;
     }
 
+    /** @return the alpha component (0–255) */
     public int getAlpha() {
         return (argb >> 24) & 0xFF;
     }
 
+    /** @return the red component (0–255) */
     public int getRed() {
         return (argb >> 16) & 0xFF;
     }
 
+    /** @return the green component (0–255) */
     public int getGreen() {
         return (argb >> 8) & 0xFF;
     }
 
+    /** @return the blue component (0–255) */
     public int getBlue() {
         return argb & 0xFF;
     }

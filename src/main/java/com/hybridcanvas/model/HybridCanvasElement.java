@@ -57,42 +57,52 @@ public sealed abstract class HybridCanvasElement permits HybridCanvasShape, Hybr
                 .concat(Transform2D.scale(scaleX, scaleY));
     }
 
+    /** @return the unique element identifier */
     public UUID getId() {
         return id;
     }
 
+    /** @return the version counter; incremented by every setter */
     public long getVersion() {
         return version;
     }
 
+    /** @return the rotation angle in radians */
     public double getRotate() {
         return rotate;
     }
 
+    /** @return the horizontal scale factor */
     public double getScaleX() {
         return scaleX;
     }
 
+    /** @return the vertical scale factor */
     public double getScaleY() {
         return scaleY;
     }
 
+    /** @return the horizontal translation in world units */
     public double getTranslateX() {
         return translateX;
     }
 
+    /** @return the vertical translation in world units */
     public double getTranslateY() {
         return translateY;
     }
 
+    /** @return whether this element is visible */
     public boolean isVisible() {
         return visible;
     }
 
+    /** @return whether this element is locked against interaction */
     public boolean isLocked() {
         return locked;
     }
 
+    /** @return the opacity in the range 0..1 */
     public double getOpacity() {
         return opacity;
     }
@@ -105,6 +115,7 @@ public sealed abstract class HybridCanvasElement permits HybridCanvasShape, Hybr
         return metadata;
     }
 
+    /** @return the parent group id, or {@code null} if top-level */
     public UUID getParentId() {
         return parentId;
     }
@@ -114,43 +125,43 @@ public sealed abstract class HybridCanvasElement permits HybridCanvasShape, Hybr
         version++;
     }
 
-    /** Bumps the version so the view's dirty-check re-renders next pass. */
+    /** @param rotate the rotation angle in radians */
     public void setRotate(double rotate) {
         this.rotate = rotate;
         bumpVersion();
     }
 
-    /** Bumps the version so the view's dirty-check re-renders next pass. */
+    /** @param scaleX the horizontal scale factor */
     public void setScaleX(double scaleX) {
         this.scaleX = scaleX;
         bumpVersion();
     }
 
-    /** Bumps the version so the view's dirty-check re-renders next pass. */
+    /** @param scaleY the vertical scale factor */
     public void setScaleY(double scaleY) {
         this.scaleY = scaleY;
         bumpVersion();
     }
 
-    /** Bumps the version so the view's dirty-check re-renders next pass. */
+    /** @param translateX the horizontal translation in world units */
     public void setTranslateX(double translateX) {
         this.translateX = translateX;
         bumpVersion();
     }
 
-    /** Bumps the version so the view's dirty-check re-renders next pass. */
+    /** @param translateY the vertical translation in world units */
     public void setTranslateY(double translateY) {
         this.translateY = translateY;
         bumpVersion();
     }
 
-    /** Bumps the version so the view's dirty-check re-renders next pass. */
+    /** @param visible whether this element is visible */
     public void setVisible(boolean visible) {
         this.visible = visible;
         bumpVersion();
     }
 
-    /** Bumps the version so the view's dirty-check re-renders next pass. */
+    /** @param locked whether this element is locked against interaction */
     public void setLocked(boolean locked) {
         this.locked = locked;
         bumpVersion();
@@ -162,7 +173,7 @@ public sealed abstract class HybridCanvasElement permits HybridCanvasShape, Hybr
         bumpVersion();
     }
 
-    /** Bumps the version so the view's dirty-check re-renders next pass. */
+    /** @param parentId the parent group id, or {@code null} for top-level */
     public void setParentId(UUID parentId) {
         this.parentId = parentId;
         bumpVersion();

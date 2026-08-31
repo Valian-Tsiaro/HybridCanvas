@@ -51,20 +51,20 @@ public final class HybridCanvasImageWithOverlay extends HybridCanvasImageShape {
     /** @return the overlay shape */
     public HybridCanvasShape getOverlay() { return overlay; }
 
-    /** @param x new x; bumps version */
+    /** @param x new x */
     public void setX(double x) { this.x = x; bumpVersion(); }
 
-    /** @param y new y; bumps version */
+    /** @param y new y */
     public void setY(double y) { this.y = y; bumpVersion(); }
 
-    /** @param w new width; bumps version */
+    /** @param w new width */
     public void setWidth(double w) { this.w = w; bumpVersion(); }
 
-    /** @param h new height; bumps version */
+    /** @param h new height */
     public void setHeight(double h) { this.h = h; bumpVersion(); }
 
     /**
-     * @param overlay the new overlay shape; must not be {@code null}; bumps version
+     * @param overlay the new overlay shape; must not be {@code null}
      * @throws IllegalArgumentException if {@code overlay} is {@code null}
      */
     public void setOverlay(HybridCanvasShape overlay) {

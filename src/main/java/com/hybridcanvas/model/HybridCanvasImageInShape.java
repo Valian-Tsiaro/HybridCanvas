@@ -42,11 +42,12 @@ public final class HybridCanvasImageInShape extends HybridCanvasImageShape {
     public double getY(int i) { return mask[2 * i + 1]; }
 
     /**
-     * Sets the coordinates of the i-th mask vertex and bumps the element version.
+     * Sets the coordinates of the i-th mask vertex.
      *
      * @param i zero-based vertex index
      * @param x new x coordinate
      * @param y new y coordinate
+     * @throws IndexOutOfBoundsException if {@code i} is out of range
      */
     public void setPoint(int i, double x, double y) {
         mask[2 * i] = x;

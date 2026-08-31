@@ -59,7 +59,7 @@ public final class Bounds2D {
         this.maxY = other.maxY;
     }
 
-    /** @return a new independent copy of this box */
+    /** Returns a new independent copy of this box. @return a new independent copy of this box */
     public Bounds2D copy() {
         return new Bounds2D(minX, minY, maxX, maxY);
     }
@@ -107,12 +107,12 @@ public final class Bounds2D {
                 && minY <= other.maxY && maxY >= other.minY;
     }
 
-    /** @return width ({@code maxX - minX}) */
+    /** Returns the width. @return width ({@code maxX - minX}) */
     public double width() {
         return maxX - minX;
     }
 
-    /** @return height ({@code maxY - minY}) */
+    /** Returns the height. @return height ({@code maxY - minY}) */
     public double height() {
         return maxY - minY;
     }

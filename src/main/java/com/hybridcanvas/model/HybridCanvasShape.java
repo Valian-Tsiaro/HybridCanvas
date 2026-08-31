@@ -55,9 +55,7 @@ public sealed abstract class HybridCanvasShape extends HybridCanvasElement
         return strokeWidth;
     }
 
-    /**
-     * @param strokeWidth the stroke width in world units (should be non-negative)
-     */
+    /** @param strokeWidth the stroke width in world units */
     public void setStrokeWidth(double strokeWidth) {
         this.strokeWidth = strokeWidth;
         bumpVersion();
@@ -68,9 +66,7 @@ public sealed abstract class HybridCanvasShape extends HybridCanvasElement
         return layerId;
     }
 
-    /**
-     * @param layerId the layer id, or {@code null} to leave unassigned
-     */
+    /** @param layerId the layer id, or {@code null} to leave unassigned */
     public void setLayerId(String layerId) {
         this.layerId = layerId;
         bumpVersion();
@@ -81,9 +77,7 @@ public sealed abstract class HybridCanvasShape extends HybridCanvasElement
         return zOrder;
     }
 
-    /**
-     * @param zOrder the z-order; higher values are drawn later
-     */
+    /** @param zOrder the z-order; higher values are drawn later */
     public void setZOrder(int zOrder) {
         this.zOrder = zOrder;
         bumpVersion();

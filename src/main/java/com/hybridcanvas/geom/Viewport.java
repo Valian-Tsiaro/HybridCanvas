@@ -12,7 +12,7 @@ public final class Viewport {
     private double minZoom = -1.0;
     private double maxZoom = -1.0;
 
-    /** @return current zoom factor */
+    /** Returns the current zoom factor. @return current zoom factor */
     public double getZoom() {
         return zoom;
     }
@@ -22,12 +22,12 @@ public final class Viewport {
         this.zoom = applyZoomLimits(zoom);
     }
 
-    /** @return horizontal pan offset in screen pixels */
+    /** Returns the horizontal pan offset. @return horizontal pan offset in screen pixels */
     public double getPanX() {
         return panX;
     }
 
-    /** @return vertical pan offset in screen pixels */
+    /** Returns the vertical pan offset. @return vertical pan offset in screen pixels */
     public double getPanY() {
         return panY;
     }

@@ -35,24 +35,16 @@ public final class HybridCanvasEllipse extends HybridCanvasShape {
     /** @return vertical radius */
     public double getRy() { return ry; }
 
-    /**
-     * @param cx new centre x; bumps version
-     */
+    /** @param cx new centre x */
     public void setCx(double cx) { this.cx = cx; bumpVersion(); }
 
-    /**
-     * @param cy new centre y; bumps version
-     */
+    /** @param cy new centre y */
     public void setCy(double cy) { this.cy = cy; bumpVersion(); }
 
-    /**
-     * @param rx new horizontal radius; bumps version
-     */
+    /** @param rx new horizontal radius */
     public void setRx(double rx) { this.rx = rx; bumpVersion(); }
 
-    /**
-     * @param ry new vertical radius; bumps version
-     */
+    /** @param ry new vertical radius */
     public void setRy(double ry) { this.ry = ry; bumpVersion(); }
 
     /** {@inheritDoc} */
