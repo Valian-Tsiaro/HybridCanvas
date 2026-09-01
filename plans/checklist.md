@@ -22,7 +22,7 @@ Status legend: `[ ]` todo, `[x]` done.
 - [x] 08-view-render-traversal.md
 
 ## Phase 5 — Rendering
-- [ ] 09-view-shape-renderer.md
+- [x] 09-view-shape-renderer.md
 - [ ] 10-view-hybridcanvas-core.md
 
 ## Phase 6 — Index + hit-test
